@@ -2,6 +2,10 @@
 
 A modern, responsive weather application built with React and TypeScript that provides real-time weather information for cities across Poland. Features a clean, intuitive interface with weather comparison capabilities and server-side rendering for optimal performance.
 
+Here you can see deployed version: [Preview](https://weather-app-gr-opiela.vercel.app/)
+
+Here you can find fresh CWV score: [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-weather-app-gr-opiela-vercel-app/tscz80188c?form_factor=mobile)
+
 ## ✨ Features
 
 - **🌍 Real-time Weather Data**: Get current weather conditions for any city in Poland
