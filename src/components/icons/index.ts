@@ -1,0 +1,9 @@
+export { default as GithubIcon } from './GithubIcon';
+export { default as HumidityIcon } from './HumidityIcon';
+export { default as LinkedinIcon } from './LinkedinIcon';
+export { default as PressureIcon } from './PressureIcon';
+export { default as SunriseIcon } from './SunriseIcon';
+export { default as SunsetIcon } from './SunsetIcon';
+export { default as TemperatureIcon } from './TemperatureIcon';
+export { default as WeatherIcon } from './WeatherIcon';
+export { default as WindIcon } from './WindIcon';
