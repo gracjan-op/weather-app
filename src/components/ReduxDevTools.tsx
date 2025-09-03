@@ -1,14 +1,24 @@
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '../store/hooks';
 
 const ReduxDevTools = () => {
   const weatherState = useAppSelector(state => state.weather);
+  const [isClient, setIsClient] = useState(false);
 
-  if (process.env.NODE_ENV === 'production') {
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Only render in development and after client hydration
+  if (!isClient || process.env.NODE_ENV === 'production') {
     return null;
   }
 
   return (
-    <div className='fixed bottom-4 right-4 bg-gray-800 text-white p-4 rounded-lg text-xs max-w-sm z-50'>
+    <div
+      suppressHydrationWarning
+      className='fixed bottom-4 right-4 bg-gray-800 text-white p-4 rounded-lg text-xs max-w-sm z-50'
+    >
       <h3 className='font-bold mb-2'>Redux State (Dev)</h3>
       <div className='space-y-1'>
         <div>

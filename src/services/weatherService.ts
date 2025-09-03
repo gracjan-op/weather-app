@@ -3,7 +3,7 @@ import type { City, WeatherApiResponse, WeatherData } from '../types/weather';
 
 const API_KEY =
   typeof window !== 'undefined'
-    ? import.meta.env.VITE_OPENWEATHER_API_KEY
+    ? (import.meta as any).env.VITE_OPENWEATHER_API_KEY
     : process.env.VITE_OPENWEATHER_API_KEY;
 
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';

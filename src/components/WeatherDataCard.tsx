@@ -1,11 +1,11 @@
 import { WeatherData } from '../types/weather';
 import {
-  HumidityIcon,
-  PressureIcon,
-  SunriseIcon,
-  SunsetIcon,
-  TemperatureIcon,
-  WindIcon,
+   HumidityIcon,
+   PressureIcon,
+   SunriseIcon,
+   SunsetIcon,
+   TemperatureIcon,
+   WindIcon,
 } from './icons';
 
 interface WeatherDataCardProps {
@@ -35,7 +35,10 @@ const WeatherDataCard = ({
           <div className='bg-blue-50 rounded-xl p-6 text-left max-w-md mx-auto'>
             <div className='space-y-2 text-sm text-blue-800'>
               <p>
-                <strong>Ładowanie o:</strong> {new Date().toLocaleString()}
+                <strong>Ładowanie o:</strong>{' '}
+                <span suppressHydrationWarning>
+                  {new Date().toLocaleString()}
+                </span>
               </p>
               <p>
                 <strong>Parametr miasta:</strong> {city}
@@ -71,7 +74,9 @@ const WeatherDataCard = ({
                 {weatherData.description}
               </div>
               <div className='text-blue-100 text-sm'>
-                {new Date(weatherData.timestamp).toLocaleString()}
+                <span suppressHydrationWarning>
+                  {new Date(weatherData.timestamp).toLocaleString()}
+                </span>
               </div>
             </div>
           </div>

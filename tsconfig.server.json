@@ -1,0 +1,37 @@
+{
+   "extends": "./tsconfig.json",
+   "compilerOptions": {
+      "target": "ES2022",
+      "module": "ESNext",
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": false,
+      "outDir": "dist/server",
+      "rootDir": ".",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": false,
+      "jsx": "react-jsx"
+   },
+   "include": [
+      "server.ts",
+      "src/config/**/*",
+      "src/utils/**/*",
+      "src/store/**/*",
+      "src/types/**/*"
+   ],
+   "exclude": [
+      "node_modules",
+      "dist",
+      "src/**/*.tsx",
+      "src/**/*.jsx",
+      "src/components/**/*",
+      "src/pages/**/*",
+      "src/App.tsx",
+      "src/entry-client.tsx",
+      "src/entry-server.tsx"
+   ]
+}

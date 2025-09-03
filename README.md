@@ -4,7 +4,7 @@ A modern, responsive weather application built with React and TypeScript that pr
 
 Here you can see deployed version: [Preview](https://weather-app-gr-opiela.vercel.app/)
 
-Here you can find fresh CWV score: [PageSpeed Insights](https://pagespeed.web.dev/analysis/https-weather-app-gr-opiela-vercel-app/tscz80188c?form_factor=mobile)
+Here you can find fresh CWV score: [PageSpeed Insights](https://pagespeed.web.dev/analysis/https://weather-app-gr-opiela.vercel-app/tscz80188c?form_factor=mobile)
 
 ## ✨ Features
 
@@ -16,6 +16,7 @@ Here you can find fresh CWV score: [PageSpeed Insights](https://pagespeed.web.de
 - **🔄 State Management**: Robust state management with Redux Toolkit
 - **🎯 Type Safety**: Full TypeScript implementation for better development experience
 - **🚀 Performance Optimized**: Efficient data caching and loading states
+- **🔒 Security**: Comprehensive security headers and CSP policies
 
 ## 🛠️ Tech Stack
 
@@ -145,26 +146,99 @@ npm run format:check
 | `BASE`                     | Base URL path (default: /)                | No       |
 | `NODE_ENV`                 | Environment mode (development/production) | No       |
 
+### Configuration Files
+
+#### TypeScript Configuration
+
+| File                   | Purpose                   | Description                                                |
+| ---------------------- | ------------------------- | ---------------------------------------------------------- |
+| `tsconfig.json`        | Main client configuration | Base TypeScript config for React app, IDE, and linting     |
+| `tsconfig.server.json` | Server configuration      | Server-side compilation for SSR, excludes React components |
+| `tsconfig.node.json`   | Build tools configuration | Vite config compilation, enables project references        |
+
+#### Build Configuration
+
+| File                 | Purpose        | Description                                             |
+| -------------------- | -------------- | ------------------------------------------------------- |
+| `vite.config.ts`     | Client build   | Vite configuration for client-side React app            |
+| `vite.config.ssr.ts` | SSR build      | Vite configuration for server-side rendering bundle     |
+| `postcss.config.js`  | CSS processing | PostCSS configuration with TailwindCSS and Autoprefixer |
+| `tailwind.config.js` | CSS framework  | TailwindCSS configuration and custom theme settings     |
+
+#### Server Configuration
+
+| File                     | Purpose           | Description                                                     |
+| ------------------------ | ----------------- | --------------------------------------------------------------- |
+| `server.ts`              | Main server       | Express server with SSR, security headers, and Vite integration |
+| `src/config/security.ts` | Security policies | Centralized security configuration (CSP, headers, policies)     |
+| `vercel.json`            | Deployment        | Vercel deployment configuration with security headers           |
+
+#### Development Tools
+
+| File               | Purpose           | Description                                          |
+| ------------------ | ----------------- | ---------------------------------------------------- |
+| `eslint.config.js` | Code linting      | ESLint configuration with React and TypeScript rules |
+| `.prettierrc`      | Code formatting   | Prettier configuration for consistent code style     |
+| `.prettierignore`  | Format exclusions | Files and directories to exclude from formatting     |
+
 ### Project Structure
 
 ```
 weather-app/
-├── src/
-│   ├── components/          # React components
-│   │   ├── ComparisonPanel/ # Weather comparison feature
-│   │   ├── icons/          # SVG icon components
+├── 📁 src/                          # Source code
+│   ├── 📁 components/               # React components
+│   │   ├── 📁 ComparisonPanel/      # Weather comparison feature
+│   │   ├── 📁 icons/                # SVG icon components
+│   │   ├── ReduxDevTools.tsx        # Development Redux state viewer
+│   │   ├── WeatherDataCard.tsx      # Weather data display component
 │   │   └── ...
-│   ├── pages/              # Page components
-│   ├── store/              # Redux store configuration
-│   ├── services/           # API services
-│   ├── hooks/              # Custom React hooks
-│   ├── types/              # TypeScript type definitions
-│   ├── utils/              # Utility functions
-│   └── styles/             # Global styles
-├── public/                 # Static assets
-├── dist/                   # Build output
-└── server.js              # Express server
+│   ├── 📁 pages/                    # Page components
+│   ├── 📁 store/                    # Redux store configuration
+│   ├── 📁 services/                 # API services
+│   ├── 📁 hooks/                    # Custom React hooks
+│   ├── 📁 types/                    # TypeScript type definitions
+│   ├── 📁 utils/                    # Utility functions
+│   ├── 📁 config/                   # Configuration files
+│   │   └── security.ts              # Security policies and headers
+│   ├── 📁 styles/                   # Global styles
+│   ├── App.tsx                      # Main React application
+│   ├── entry-client.tsx             # Client-side entry point
+│   └── entry-server.tsx             # Server-side rendering entry point
+├── 📁 public/                       # Static assets
+├── 📁 dist/                         # Build output
+│   ├── 📁 client/                   # Client-side build
+│   └── 📁 server/                   # Server-side build
+├── 📁 scripts/                      # Build and utility scripts
+├── 📁 .vercel/                      # Vercel deployment cache
+├── 📄 server.ts                     # Express server with SSR
+├── 📄 vite.config.ts                # Client build configuration
+├── 📄 vite.config.ssr.ts            # SSR build configuration
+├── 📄 tsconfig.json                 # Main TypeScript configuration
+├── 📄 tsconfig.server.json          # Server TypeScript configuration
+├── 📄 tsconfig.node.json            # Build tools TypeScript configuration
+├── 📄 postcss.config.js             # CSS processing configuration
+├── 📄 tailwind.config.js            # TailwindCSS configuration
+├── 📄 eslint.config.js              # ESLint configuration
+├── 📄 .prettierrc                   # Prettier configuration
+├── 📄 vercel.json                   # Deployment configuration
+├── 📄 vite-env.d.ts                 # Vite type declarations
+├── 📄 package.json                  # Dependencies and scripts
+└── 📄 README.md                     # This file
 ```
+
+### Build Process
+
+1. **Client Build** (`npm run build:client`)
+   - Vite builds React app to `dist/client/`
+   - Generates optimized HTML, CSS, and JavaScript
+
+2. **Server Build** (`npm run build:server`)
+   - Vite builds SSR bundle to `dist/server/entry-server.js`
+   - TypeScript compiles server code to `dist/server/server.js`
+
+3. **Production Server** (`npm run preview`)
+   - Runs compiled server from `dist/server/server.js`
+   - Serves SSR-rendered HTML with security headers
 
 ## 🚀 Deployment
 
@@ -239,6 +313,16 @@ weather-app/
    ```bash
    npm run preview
    ```
+
+## 🔒 Security Features
+
+The application implements comprehensive security measures:
+
+- **Content Security Policy (CSP)**: Restricts resource loading to trusted sources
+- **Security Headers**: X-Frame-Options, X-XSS-Protection, HSTS, and more
+- **Input Validation**: Server-side validation of all user inputs
+- **Rate Limiting**: Protection against abuse (configurable)
+- **CORS Policies**: Controlled cross-origin resource sharing
 
 ## 🤝 Contributing
 

@@ -6,6 +6,6 @@ import vercel from 'vite-plugin-vercel';
 export default defineConfig({
   plugins: [react(), vercel()],
   build: {
-    outDir: 'dist',
+    outDir: 'dist/client',
   },
 });
