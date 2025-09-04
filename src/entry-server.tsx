@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom/server';
 import App from './App';
 import weatherReducer, { initializeWithServerData } from './store/weatherSlice';
-import './styles/main.css';
 import type { WeatherData } from './types/weather';
 import { extractCityFromUrl, loadWeatherData } from './utils/serverDataLoader';
 
